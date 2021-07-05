@@ -3,6 +3,7 @@ package br.com.aula4.tm.ecommerce.model.converter;
 import br.com.aula4.tm.ecommerce.dto.ProdutoDTO;
 import br.com.aula4.tm.ecommerce.form.ProdutoForm;
 import br.com.aula4.tm.ecommerce.model.entity.Produto;
+import br.com.aula4.tm.ecommerce.utils.Id;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 public class ProdutoConverter {
     public static Produto produtoFormToEntity(ProdutoForm produtoForm) {
         return new Produto(
+                Id.generateIdProduto(),
                 produtoForm.getNome(),
                 CategoriaConverter.categoriaFormToEntity(produtoForm.getCategorias()),
                 produtoForm.getPreco(),
