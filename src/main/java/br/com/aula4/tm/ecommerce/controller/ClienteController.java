@@ -1,6 +1,8 @@
 package br.com.aula4.tm.ecommerce.controller;
 
+import br.com.aula4.tm.ecommerce.form.ClienteForm;
 import br.com.aula4.tm.ecommerce.form.ProdutoForm;
+import br.com.aula4.tm.ecommerce.model.entity.Cliente;
 import br.com.aula4.tm.ecommerce.model.entity.Produto;
 import br.com.aula4.tm.ecommerce.model.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,13 @@ public class ClienteController {
         return ResponseEntity.ok(clienteService.findAllClientes());
     }
 
+    @PostMapping("/clientes")
+    public ResponseEntity<?> getAllClientes(@RequestBody ClienteForm clienteForm, UriComponentsBuilder uriBuilder) {
+        Cliente cliente =clienteService.addCliente(clienteForm);
+        URI uri = uriBuilder.path("/aula4/tm/clientes/{id}").buildAndExpand(cliente.getId()).toUri();
+        return ResponseEntity.created(uri).build();
+    }
+
     @GetMapping("/produtos")
     public ResponseEntity<?> getAllProdutos() {
         return ResponseEntity.ok(clienteService.findAllProdutos());
@@ -38,7 +47,7 @@ public class ClienteController {
     public ResponseEntity<?> addProduto(@PathVariable long idCliente, @RequestBody ProdutoForm produtoForm, UriComponentsBuilder uriBuilder) {
         Produto produto = clienteService.addProduto(idCliente, produtoForm);
 
-        URI uri = uriBuilder.path("/produtos/{id}").buildAndExpand(produto.getId()).toUri();
+        URI uri = uriBuilder.path("aula4/tm/produtos/{id}").buildAndExpand(produto.getId()).toUri();
 
         return ResponseEntity.created(uri).build();
     }

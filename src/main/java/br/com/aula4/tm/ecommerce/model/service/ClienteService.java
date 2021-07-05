@@ -34,8 +34,8 @@ public class ClienteService {
         return ClienteConverter.clienteEntityToDTO(clienteRepository.getAllClientes());
     }
 
-    public void addCliente(ClienteForm clienteForm) {
-        clienteRepository.addCliente(ClienteConverter.clienteFormToEntity(clienteForm));
+    public Cliente addCliente(ClienteForm clienteForm) {
+        return clienteRepository.addCliente(ClienteConverter.clienteFormToEntity(clienteForm));
     }
 
     public List<ProdutoDTO> findAllProdutos() {
