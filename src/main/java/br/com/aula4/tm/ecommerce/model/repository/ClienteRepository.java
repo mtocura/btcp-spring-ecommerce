@@ -21,8 +21,9 @@ public class ClienteRepository {
         clientes.add(cliente);
     }
 
-    public void addProduto(Produto produto) {
+    public Produto addProduto(Produto produto) {
         produtos.add(produto);
+        return produto;
     }
 
     public List<Produto> getAllProdutos() {
