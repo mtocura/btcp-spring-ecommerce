@@ -1,19 +1,19 @@
-package br.com.aula4.tm.ecommerce.form;
+package br.com.aula4.tm.ecommerce.dto;
 
 import br.com.aula4.tm.ecommerce.model.entity.Categoria;
 
 import java.util.List;
 
-public class ProdutoForm {
+public class ProdutoDTO {
     private String nome;
-    private List<CategoriaForm> categorias;
+    private List<CategoriaDTO> categorias;
     private Double preco;
     private Integer quantidade;
 
-    public ProdutoForm() {
+    public ProdutoDTO() {
     }
 
-    public ProdutoForm(String nome, List<CategoriaForm> categorias, Double preco, Integer quantidade) {
+    public ProdutoDTO(String nome, List<CategoriaDTO> categorias, Double preco, Integer quantidade) {
         this.nome = nome;
         this.categorias = categorias;
         this.preco = preco;
@@ -24,7 +24,7 @@ public class ProdutoForm {
         return nome;
     }
 
-    public List<CategoriaForm> getCategorias() {
+    public List<CategoriaDTO> getCategorias() {
         return categorias;
     }
 
